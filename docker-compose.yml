@@ -12,7 +12,7 @@ influxdb:
   volumes:
     - /data/docker/influxdb:/data
 grafana:
-  image: dilgerm/rpi-grafana
+  image: pithings/rpi-grafana
   volumes:
     - /data/docker/grafana/data:/var/lib/grafana
     - /data/docker/grafana/log:/var/log/grafana
