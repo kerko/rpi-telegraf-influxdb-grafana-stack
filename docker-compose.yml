@@ -19,7 +19,7 @@ influxdb:
     - 8086:8086
     - 8083:8083
   volumes:
-    - /data/docker/influxdb:/data
+    - /data/docker/influxdb:/var/lib/influxdb
   container_name: influxdb
 grafana:
   image: pithings/rpi-grafana
