@@ -5,6 +5,15 @@ telegraf:
   links:
     - influxdb
   container_name: telegraf
+  environment:
+    HOST_PROC: /rootfs/proc
+    HOST_SYS: /rootfs/sys
+    HOST_ETC: /rootfs/etc
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock:ro
+    - /sys:/rootfs/sys:ro
+    - /proc:/rootfs/proc:ro
+    - /etc:/rootfs/etc:ro
 influxdb:
   image: pithings/rpi-influxdb
   ports:
