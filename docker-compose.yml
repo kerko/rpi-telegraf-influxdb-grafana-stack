@@ -1,7 +1,5 @@
 telegraf:
   image: apicht/rpi-telegraf
-  volumes:
-    - /data/docker/telegraf:/data
   links:
     - influxdb
   container_name: telegraf
