@@ -1,31 +1,31 @@
-telegraf:
-  image: apicht/rpi-telegraf
-  links:
-    - influxdb
-  container_name: telegraf
-  environment:
-    HOST_PROC: /rootfs/proc
-    HOST_SYS: /rootfs/sys
-    HOST_ETC: /rootfs/etc
-  volumes:
-    - /data/docker/telegraf:/data
-    - /var/run/docker.sock:/var/run/docker.sock:ro
-    - /sys:/rootfs/sys:ro
-    - /proc:/rootfs/proc:ro
-    - /etc:/rootfs/etc:ro
-influxdb:
-  image: pithings/rpi-influxdb
-  ports:
-    - 8086:8086
-    - 8083:8083
-  volumes:
-    - /data/docker/influxdb:/var/lib/influxdb
-  container_name: influxdb
-grafana:
-  image: pithings/rpi-grafana
-  volumes:
-    - /data/docker/grafana/data:/var/lib/grafana
-    - /data/docker/grafana/log:/var/log/grafana
-  ports:
-    - "3000:3000"
-  container_name: grafana
+version: '2'
+
+services:
+  telegraf:
+    image: apicht/rpi-telegraf
+    links:
+      - influxdb
+    environment:
+      HOST_PROC: /rootfs/proc
+      HOST_SYS: /rootfs/sys
+      HOST_ETC: /rootfs/etc
+    volumes:
+      - /data/docker/telegraf:/data
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /sys:/rootfs/sys:ro
+      - /proc:/rootfs/proc:ro
+      - /etc:/rootfs/etc:ro
+  influxdb:
+    image: pithings/rpi-influxdb
+    ports:
+      - 8086:8086
+      - 8083:8083
+    volumes:
+      - /data/docker/influxdb:/var/lib/influxdb
+  grafana:
+    image: pithings/rpi-grafana
+    volumes:
+      - /data/docker/grafana/data:/var/lib/grafana
+      - /data/docker/grafana/log:/var/log/grafana
+    ports:
+      - "3000:3000"
