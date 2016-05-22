@@ -17,6 +17,8 @@ services:
       - /etc:/rootfs/etc:ro
   influxdb:
     image: pithings/rpi-influxdb
+    environment:
+    PRE_CREATE_DB: telegraf
     ports:
       - 8086:8086
       - 8083:8083
