@@ -8,6 +8,7 @@ telegraf:
     HOST_SYS: /rootfs/sys
     HOST_ETC: /rootfs/etc
   volumes:
+    - /data/docker/telegraf:/data
     - /var/run/docker.sock:/var/run/docker.sock:ro
     - /sys:/rootfs/sys:ro
     - /proc:/rootfs/proc:ro
