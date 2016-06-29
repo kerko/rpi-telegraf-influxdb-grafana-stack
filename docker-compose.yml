@@ -9,7 +9,9 @@ services:
       HOST_PROC: /rootfs/proc
       HOST_SYS: /rootfs/sys
       HOST_ETC: /rootfs/etc
+      HOST_MOUNT_PREFIX: /rootfs
     volumes:
+      - /:/rootfs:ro
       - /data/docker/telegraf:/data
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /sys:/rootfs/sys:ro
