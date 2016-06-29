@@ -13,10 +13,6 @@ services:
     volumes:
       - /:/rootfs:ro
       - /data/docker/telegraf:/data
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /sys:/rootfs/sys:ro
-      - /proc:/rootfs/proc:ro
-      - /etc:/rootfs/etc:ro
   influxdb:
     image: pithings/rpi-influxdb
     environment:
