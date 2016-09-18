@@ -3,6 +3,7 @@ version: '2'
 services:
   telegraf:
     image: apicht/rpi-telegraf
+    restart: always
     links:
       - influxdb
     environment:
@@ -15,6 +16,7 @@ services:
       - /data/docker/telegraf:/data
   influxdb:
     image: pithings/rpi-influxdb
+    restart: always
     environment:
       PRE_CREATE_DB: telegraf
     ports:
@@ -22,8 +24,10 @@ services:
       - 8083:8083
     volumes:
       - /data/docker/influxdb:/var/lib/influxdb
+      - ./influxdb.conf:/etc/influxdb/influxdb.conf:ro
   grafana:
     image: pithings/rpi-grafana
+    restart: always
     volumes:
       - /data/docker/grafana/data:/var/lib/grafana
       - /data/docker/grafana/log:/var/log/grafana
